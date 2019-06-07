@@ -1,0 +1,9 @@
+参数格式(一共有三种格式):
+    1) -XX:+<option>       表示开启option选项
+    2) -XX:-<option>       表示关闭option选项
+    3) -XX:<option>=value  给option赋值
+
+常用参数:
+    1)-XX:+TraceClassLoading
+    在jvm启动时, 展示类的加载信息
+
