@@ -6,4 +6,7 @@
 常用参数:
     1)-XX:+TraceClassLoading
     在jvm启动时, 展示类的加载信息
+    2)-XX:+TraceClassUnloading
+    展示类的卸载 信息
+
 
