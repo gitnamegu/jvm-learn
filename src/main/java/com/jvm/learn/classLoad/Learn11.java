@@ -6,6 +6,7 @@ import java.io.*;
  *      类加载器在加载类时, 如果发现已经加载过, 则不会再次加载, 而是直接返回类的Class对象. 也就是说同一个类
  * 加载器及其所有的父类加载器, 不会加载两个相同的类. 也就是说在一个类加载器的命名空间中, 不会出现两个完整名字
  * 相同的类(包括包名). 但是在这个demo中, 创建了两个类加载器, 所以class字节码会被加载两遍.
+ *
  * @Author dabing
  * @Date 2019-06-18 22:26
  **/
@@ -72,10 +73,14 @@ public class Learn11 extends ClassLoader {
     public static void main(String[] args) throws ClassNotFoundException {
         String mineClassLoaderName1 = "mineClassLoaderName";
         Learn11 learn11_1 = new Learn11(mineClassLoaderName1);
-        String classPath = "/Users/dabing/jvm/Learn02.class";
+        String classPath = "/Users/dabing/jvm/Demo.class";
         Class<?> clazz1 = learn11_1.loadClass(classPath);
         System.out.println("class:" + clazz1.hashCode());
 
+
+        //      如果是系统类加载器, 同一个加载器加载两遍同一个类时, 不会抛出异常, 但是自定义类加载器在加载两遍 \
+        // 时会抛出java.lang.LinkageError异常. 所以注释下一行代码.
+        // learn11_1.loadClass(classPath);
 
         String mineClassLoaderName2 = "mineClassLoaderName2";
         Learn11 learn11_2 = new Learn11(mineClassLoaderName2);
